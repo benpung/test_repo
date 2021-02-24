@@ -1,3 +1,6 @@
+
+#!/bin/bash
+
 # This helper utility facilitates the git flow process
 # laid out @ https://dot-confluence.lilly.com/display/IC/Git+Flow+Process
 # The usage of this utility is as follows
