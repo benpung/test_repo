@@ -16,11 +16,11 @@ inp=$2
 
 badargs()
 {
-echo "Usage:"
-echo "gg start <jira-card#> : to start work on a card"
-echo "gg dev <jira-card#> : to prepare card for dev deployment"
-echo "gg qa <jira-card#> : to prepare card for qa deployment"
-exit
+  echo "Usage:"
+  echo "gg start <jira-card#> : to start work on a card"
+  echo "gg dev <jira-card#> : to prepare card for dev deployment"
+  echo "gg qa <jira-card#> : to prepare card for qa deployment"
+  exit
 }
 
 start()
@@ -54,52 +54,52 @@ start()
 
 dev()
 {
-set card=$1
-git checkout feature/$card
-git add . && git commit -m "gg: readying feature/$card-dev for dev deploy" --allow-empty && git push
-git checkout feature/$card-dev
-git merge feature/$card
-git pull origin dev
-git status
-echo READ THIS
-echo -----------------------------------------------------------------------------------
-echo You are now on feature/$card-dev branch
-echo Use this for conflict resolution with dev
-echo Make sure any code that you change, is done on parent feature/$card and not here
-echo Conflict resolution
-echo -----------------------------------------------------------------------------------
-echo Give preference to the dev version if you see conflicts on files you did not change
-echo Use git checkout --ours filename for quickly resolving conflicts in files/folders where you want to retain your version over the dev version
-echo Use git checkout --theirs filename if you want to retain the dev version
-echo Or resolve conflicts one by one if needed. Then add, commit and push
-echo -----------------------------------------------------------------------------------
-echo Use git status to quickly check current state
-exit
+  card=$1
+  git checkout feature/$card
+  git add . && git commit -m "gg: readying feature/$card-dev for dev deploy" --allow-empty && git push
+  git checkout feature/$card-dev
+  git merge feature/$card
+  git pull origin dev
+  git status
+  echo READ THIS
+  echo -----------------------------------------------------------------------------------
+  echo You are now on feature/$card-dev branch
+  echo Use this for conflict resolution with dev
+  echo Make sure any code that you change, is done on parent feature/$card and not here
+  echo Conflict resolution
+  echo -----------------------------------------------------------------------------------
+  echo Give preference to the dev version if you see conflicts on files you did not change
+  echo Use git checkout --ours filename for quickly resolving conflicts in files/folders where you want to retain your version over the dev version
+  echo Use git checkout --theirs filename if you want to retain the dev version
+  echo Or resolve conflicts one by one if needed. Then add, commit and push
+  echo -----------------------------------------------------------------------------------
+  echo Use git status to quickly check current state
+  exit
 }
 
 qa()
 {
-set card=$1
-git checkout feature/$card
-git add . && git commit -m "gg: readying feature/$card-qa for QA deploy" --allow-empty && git push
-git checkout feature/$card-qa
-git merge feature/$card
-git pull origin qa
-git status
-echo READ THIS
-echo -----------------------------------------------------------------------------------
-echo You are now on feature/$card-qa branch
-echo Use this for conflict resolution with qa
-echo Make sure any code that you change, is done on parent feature/$card and not here
-echo Conflict resolution
-echo -----------------------------------------------------------------------------------
-echo Give preference to the qa version if you see conflicts on files you did not change
-echo Use git checkout --ours filename for quickly resolving conflicts in files/folders where you want to retain your version over the qa version
-echo Use git checkout --theirs filename if you want to retain the qa version
-echo Or resolve conflicts one by one if needed. Then add, commit and push
-echo -----------------------------------------------------------------------------------
-echo Use git status to quickly check current state
-exit
+  card=$1
+  git checkout feature/$card
+  git add . && git commit -m "gg: readying feature/$card-qa for QA deploy" --allow-empty && git push
+  git checkout feature/$card-qa
+  git merge feature/$card
+  git pull origin qa
+  git status
+  echo READ THIS
+  echo -----------------------------------------------------------------------------------
+  echo You are now on feature/$card-qa branch
+  echo Use this for conflict resolution with qa
+  echo Make sure any code that you change, is done on parent feature/$card and not here
+  echo Conflict resolution
+  echo -----------------------------------------------------------------------------------
+  echo Give preference to the qa version if you see conflicts on files you did not change
+  echo Use git checkout --ours filename for quickly resolving conflicts in files/folders where you want to retain your version over the qa version
+  echo Use git checkout --theirs filename if you want to retain the qa version
+  echo Or resolve conflicts one by one if needed. Then add, commit and push
+  echo -----------------------------------------------------------------------------------
+  echo Use git status to quickly check current state
+  exit
 }
 
 if [ -z $cmd ] || { [ $cmd != "start" ] && [ $cmd != "dev" ] && [ $cmd != "qa" ] ;}
