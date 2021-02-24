@@ -113,8 +113,10 @@ if [ $cmd == "start" ]
 then
   start $inp
 elif [ $cmd == "dev" ]
+then
   dev $inp
 elif [ $cmd == "qa" ]
+then
   qa $inp 
 else
   echo "Usage:"
