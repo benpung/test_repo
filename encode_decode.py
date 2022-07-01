@@ -35,4 +35,3 @@ elif i_mode == 'd':
     decode_string(i_decode)
 else:
     print('invalid input.  enter e or d.  exiting.')
-    exit
